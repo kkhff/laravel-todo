@@ -17,10 +17,20 @@ Project ini adalah aplikasi Todo List sederhana yang dibangun menggunakan Larave
     ``` Bash
     cp .env.example .env
     ```
-3. **Install Dependencies:**
+3. **Install Dependencies:** Jika kamu memiliki PHP dan Composer di lokal:
     ``` Bash
     composer install
     ```
+    Jika kamu **hanya ingin menggunakan** Docker (Tanpa install PHP di lokal):
+    ``` Bash
+    docker run --rm \
+        -u "$(id -u):$(id -g)" \
+        -v "$(pwd):/var/www/html" \
+        -w /var/www/html \
+        laravelsail/php83-composer:latest \
+        composer install --ignore-platform-reqs
+    ```
+
 4. **Jalankan Docker Sail:**
     ``` Bash
     ./vendor/bin/sail up -d
