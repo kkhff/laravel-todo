@@ -1,11 +1,18 @@
-# Laravel Todo App - Monolith Edition
-Project ini adalah aplikasi Todo List sederhana yang dibangun menggunakan Laravel dan PostgreSQL. Project ini merupakan tahap awal (Milestone 1) dari pembelajaran arsitektur Backend, yang nantinya akan dievolusi menjadi RESTful API dengan dokumentasi Swagger.
+# Laravel Todo App - API & Interactive Edition
+Project ini adalah aplikasi Todo List yang dikembangkan dari arsitektur Monolith menjadi **Hybird Web-API** Project ini adalah **(Milestone 2)** yang menonjolkan integrasi laravel sebagai Backend API, Alpine.js di Frontend, dan Dokumentasi API menggunakan Swagger.
 
 ## Tech Stack
-- **Framework:** Laravel 11
+- **Framework:** Laravel 11 (RESTful API)
 - **Database:** PostgreSQL
+- **Frontend Interactivity:** Alpine.js (Singgle Page Experience)
+- **Documentation:** Swagger UI (OpenAPI 3.0)
+- **Styling:** Tailwind CSS
 - **Server:** Docker (Laravel Sail)
-- **Frontend:** Blade Templating + Tailwind CSS
+
+## API Documentation
+Project ini sudah dilengkapi dengan **Swagger UI** untuk memudahkan pengujian API.
+Setelah server berjalan, kamu dapat mengakses dokumentasi di:
+`http://localhost/api/documentation`
 
 ## Cara Menjalankan Project (Lokal)
 1. **Clone Repository:**

@@ -1,0 +1,166 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel Todo API Documentation",
+        "description": "Dokumentasi API untuk aplikasi Todo List menggunakan Laravel 11 dan PostgreSQL",
+        "contact": {
+            "email": "admin@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api",
+            "description": "API Server Utama"
+        }
+    ],
+    "paths": {
+        "/v1/todos": {
+            "get": {
+                "tags": [
+                    "Todos V1"
+                ],
+                "summary": "Ambil daftar tugas dari DB",
+                "description": "Mengambil semua tugas yang tersimpan di database",
+                "operationId": "getTodoListV1",
+                "responses": {
+                    "200": {
+                        "description": "Daftar tugas berhasil diambil"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Todos V1"
+                ],
+                "summary": "Tambah tugas baru",
+                "operationId": "storeTodoV1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Belajar Laravel API"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Berhasil simpan"
+                    }
+                }
+            }
+        },
+        "/v1/todos/{todo}/toggle": {
+            "patch": {
+                "tags": [
+                    "Todos V1"
+                ],
+                "summary": "Toggle status is_completed",
+                "description": "Endpoint khusus untukganti status tanpa refresh",
+                "operationId": "toggleTodoStatusV1",
+                "parameters": [
+                    {
+                        "name": "todo",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Status diperbarui"
+                    },
+                    "404": {
+                        "description": "Tugas tidak ditemukan"
+                    }
+                }
+            }
+        },
+        "/v1/todos/{todo}": {
+            "put": {
+                "tags": [
+                    "Todos V1"
+                ],
+                "summary": "Update judul tugas",
+                "operationId": "updateTodoV1",
+                "parameters": [
+                    {
+                        "name": "todo",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data diupdate"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Todos V1"
+                ],
+                "summary": "Hapus tugas",
+                "operationId": "deleteTodoV1",
+                "parameters": [
+                    {
+                        "name": "todo",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data dihapus"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Todos V1",
+            "description": "Dokumentasi API untuk manajemen tugas harian (Todo List)"
+        }
+    ]
+}
